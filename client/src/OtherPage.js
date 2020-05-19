@@ -5,7 +5,7 @@ export default () => {
     return(
         <dir>
             I'm some other page!
-            <Link to="/">Go back home</Link>
+            <Link to="/">Go home</Link>
         </dir>
     );
 }
