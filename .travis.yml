@@ -4,20 +4,20 @@ services:
     - docker
 
 before_install:
-    - docker build -t carloscorreagoncalves/react-test -f ./client/Dockerfile.dev ./client
+    - docker build -t ccorreag/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-    - docker run -e CI=true carloscorreagoncalves/react-test npm test -- --coverage
+    - docker run -e CI=true ccorreag/react-test npm test -- --coverage
 
 after_success:
-    - docker build -t carloscorreagoncalves/multi-client ./client
-    - docker build -t carloscorreagoncalves/multi-server ./server
-    - docker build -t carloscorreagoncalves/multi-worker ./worker
-    - docker build -t carloscorreagoncalves/multi-nginx ./nginx
+    - docker build -t ccorreag/multi-client ./client
+    - docker build -t ccorreag/multi-server ./server
+    - docker build -t ccorreag/multi-worker ./worker
+    - docker build -t ccorreag/multi-nginx ./nginx
     # Log in to the docker CLI
     - ECHO "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     # take those images images and push them to docker hub
-    - docker push carloscorreagoncalves/multi-client
-    - docker push carloscorreagoncalves/multi-server
-    - docker push carloscorreagoncalves/multi-worker
-    - docker push carloscorreagoncalves/multi-nginx
+    - docker push ccorreag/multi-client
+    - docker push ccorreag/multi-server
+    - docker push ccorreag/multi-worker
+    - docker push ccorreag/multi-nginx
