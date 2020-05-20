@@ -16,8 +16,25 @@ after_success:
     - docker build -t ccorreag/multi-nginx ./nginx
     # Log in to the docker CLI
     - docker login -u "$DOCKER_ID" -p "$DOCKER_PASSWORD"
+      docker login -u "$DOCKER_ID" -p "$DOCKER_PASSWORD"
+
     # take those images images and push them to docker hub
     - docker push ccorreag/multi-client
     - docker push ccorreag/multi-server
     - docker push ccorreag/multi-worker
     - docker push ccorreag/multi-nginx
+
+deploy:
+    edge: true
+    provider: elasticbeanstalk
+    region: us-west-2
+    app: multi-docker
+    env: MultiDocker-env
+    bucket_name: elasticbeanstalk-us-west-2-347532157287
+    bucket_path: docker-multi
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_id: $AWS_SECRET_KEY
+
+    
