@@ -6,21 +6,21 @@
             "image": "ccorreag/multi-client",
             "hostname": "client",
             "essential": false,
-            "memory": 128
+            "memory": 256
         },
         {
             "name": "server",
             "image": "ccorreag/multi-server",
             "hostname": "api",
             "essential": false,
-            "memory": 128
+            "memory": 256
         },
         {
             "name": "worker",
             "image": "ccorreag/multi-worker",
             "hostname": "worker",
             "essential": false,
-            "memory": 128
+            "memory": 256
         },
         {
             "name": "nginx",
@@ -36,7 +36,7 @@
                 "client", 
                 "server"
             ],
-            "memory": 128
+            "memory": 256
         }
 
 
